@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+jwt:
+  secret: 64c2f277-18af-4a66-8346-add201464158
+  expiration: 300000
+
+spring:
+  application:
+    name: notapp
+
+  security:
+    user:
+      name: notapp
+      password: notapp.pass
+
+  datasource:
+    url: jdbc:mysql://localhost:6500/notapp-db
+    username: notapp
+    password: notapp.pass
+    diver-class-name: com.mysql.cj.jdbc.Driver

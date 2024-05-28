@@ -1,0 +1,17 @@
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+jpa:
+  show-sql: true
+
+server:
+  port: 6000
+
+jwt:
+  expiration: 3600000
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:6500/notapp-db
