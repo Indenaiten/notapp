@@ -1,6 +1,7 @@
 package org.codenaiten.notapp.infraestructure.config.context;
 
 import org.codenaiten.notapp.application.ApplicationContext;
+import org.codenaiten.notapp.application.api.LoginUseCase;
 import org.codenaiten.notapp.application.api.SignupUseCase;
 import org.codenaiten.notapp.domain.api.UserService;
 import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
@@ -70,6 +71,11 @@ public class InfraestructureContext extends ApplicationContext {
         return super.signupUseCase();
     }
 
+    @Bean
+    @Override
+    public LoginUseCase loginUseCase() {
+        return super.loginUseCase();
+    }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
