@@ -8,17 +8,15 @@ import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.port.service.PassHasherServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 @Configuration
 public class SpringContextConfig extends ApplicationFactory {
 
-    private final ApplicationContext springContext;
+    private final ApplicationContext applicationContext;
 
 
 
@@ -26,13 +24,13 @@ public class SpringContextConfig extends ApplicationFactory {
 // ---| CONSTRUCTOR |------------------------------------------------------------------------------------------------ \\
 // ------------------------------------------------------------------------------------------------------------------ \\
     @Autowired
-    public SpringContextConfig(final ApplicationContext springContext) {
-        this.springContext = springContext;
+    public SpringContextConfig( final ApplicationContext applicationContext ) {
+        this.applicationContext = applicationContext;
     }
 
 
 // ------------------------------------------------------------------------------------------------------------------ \\
-// ---| USE CASES BEANS |-------------------------------------------------------------------------------------------- \\
+// ---| USE CASE BEANS |--------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Bean
@@ -55,12 +53,12 @@ public class SpringContextConfig extends ApplicationFactory {
 
     @Override
     public UserRepositoryPort userRepositoryPort() {
-        return this.springContext.getBean( UserRepositoryPort.class );
+        return this.applicationContext.getBean( UserRepositoryPort.class );
     }
 
     @Override
     public PassHasherServicePort passHasherServicePort() {
-        return this.springContext.getBean( PassHasherServicePort.class );
+        return this.applicationContext.getBean( PassHasherServicePort.class );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
