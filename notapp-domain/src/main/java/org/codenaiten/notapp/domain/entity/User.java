@@ -17,6 +17,7 @@ public class User implements Entity {
     private Name name;
     private LastName lastname;
     private String password;
+    private String salt;
 
 
 
@@ -31,7 +32,8 @@ public class User implements Entity {
             final Email email,
             final Name name,
             final LastName lastname,
-            final String password
+            final String password,
+            final String salt
     ) {
         this.id = id;
         this.username = username;
@@ -39,6 +41,7 @@ public class User implements Entity {
         this.name = name;
         this.lastname = lastname;
         this.password = password;
+        this.salt = salt;
     }
 
 
@@ -112,6 +115,14 @@ public class User implements Entity {
 
     public String getPassword() {
         return this.password;
+    }
+
+    public void setSalt( final String salt ) {
+        this.salt = salt;
+    }
+
+    public String getSalt() {
+        return this.salt;
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

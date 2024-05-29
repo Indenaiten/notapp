@@ -14,7 +14,7 @@ import org.codenaiten.notapp.domain.type.Name;
 import org.codenaiten.notapp.domain.entity.User;
 import org.codenaiten.notapp.domain.type.user.UserId;
 import org.codenaiten.notapp.domain.type.user.UserName;
-import org.codenaiten.notapp.infraestructure.core.entity.Entityable;
+import org.codenaiten.notapp.domain.core.entity.Entityable;
 
 @Entity
 @Table(name = "users")
@@ -43,6 +43,9 @@ public class UserModel implements Entityable<User> {
     @Column(name = "password", nullable = false, length = 250)
     private String password;
 
+    @Column(name = "salt", nullable = false, length = 250)
+    private String salt;
+
 
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -56,6 +59,7 @@ public class UserModel implements Entityable<User> {
         this.name = user.getName() != null ? user.getName().value() : null;
         this.lastname = user.getLastname() != null ? user.getLastname().value() : null;
         this.password = user.getPassword();
+        this.salt = user.getSalt();
     }
 
 
@@ -71,7 +75,7 @@ public class UserModel implements Entityable<User> {
         final Email email = Email.of( this.email );
         final Name name = Name.of( this.name );
         final LastName lastname = LastName.of( this.lastname );
-        return new User( id, username, email, name, lastname, this.password);
+        return new User( id, username, email, name, lastname, this.password, this.salt);
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

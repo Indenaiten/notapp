@@ -19,3 +19,7 @@ spring:
     username: notapp
     password: notapp.pass
     diver-class-name: com.mysql.cj.jdbc.Driver
+
+password:
+  hasher:
+    sign: f220b533-c986-4c51-8d92-fcae7ce99bc9

@@ -7,6 +7,7 @@ CREATE TABLE users(
 	name VARCHAR(250) NOT NULL,
 	lastname VARCHAR(250) NOT NULL,
 	password VARCHAR(250) NOT NULL,
+	salt VARCHAR(250) NOT NULL,
 
 	-- KEYS
 	PRIMARY KEY( id )

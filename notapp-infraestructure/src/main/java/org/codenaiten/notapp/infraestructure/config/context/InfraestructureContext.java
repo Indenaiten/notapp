@@ -3,25 +3,31 @@ package org.codenaiten.notapp.infraestructure.config.context;
 import org.codenaiten.notapp.application.ApplicationContext;
 import org.codenaiten.notapp.application.api.SignupUseCase;
 import org.codenaiten.notapp.domain.api.UserService;
-import org.codenaiten.notapp.domain.port.UserRepository;
+import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
+import org.codenaiten.notapp.domain.port.service.PassHasherServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ContextConfig extends ApplicationContext {
+public class InfraestructureContext extends ApplicationContext {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryPort userRepositoryPort;
+    private final PassHasherServicePort passHasherServicePort;
+
+
 
 // ------------------------------------------------------------------------------------------------------------------ \\
-// ---| IMPLEMENT METHODS |------------------------------------------------------------------------------------------ \\
+// ---| CONSTRUCTOR |------------------------------------------------------------------------------------------------ \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Autowired
-    public ContextConfig(
-            final UserRepository userRepository
+    public InfraestructureContext(
+            final UserRepositoryPort userRepositoryPort,
+            final PassHasherServicePort passHasherServicePort
     ) {
-        this.userRepository = userRepository;
+        this.userRepositoryPort = userRepositoryPort;
+        this.passHasherServicePort = passHasherServicePort;
     }
 
 
@@ -30,10 +36,14 @@ public class ContextConfig extends ApplicationContext {
 // ---| IMPLEMENT METHODS |------------------------------------------------------------------------------------------ \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    @Bean
     @Override
-    public UserRepository userRepository() {
-        return this.userRepository;
+    public UserRepositoryPort userRepositoryPort() {
+        return this.userRepositoryPort;
+    }
+
+    @Override
+    public PassHasherServicePort passHasherServicePort() {
+        return this.passHasherServicePort;
     }
 
 

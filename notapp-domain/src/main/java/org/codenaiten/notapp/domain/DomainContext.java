@@ -1,7 +1,8 @@
 package org.codenaiten.notapp.domain;
 
 import org.codenaiten.notapp.domain.api.UserService;
-import org.codenaiten.notapp.domain.port.UserRepository;
+import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
+import org.codenaiten.notapp.domain.port.service.PassHasherServicePort;
 import org.codenaiten.notapp.domain.service.UserServiceImpl;
 
 public abstract class DomainContext {
@@ -12,7 +13,7 @@ public abstract class DomainContext {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     public UserService userService(){
-        return new UserServiceImpl( this.userRepository() );
+        return new UserServiceImpl( this.userRepositoryPort(), this.passHasherServicePort() );
     }
 
 
@@ -21,7 +22,8 @@ public abstract class DomainContext {
 // ---| PORT |------------------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public abstract UserRepository userRepository();
+    public abstract UserRepositoryPort userRepositoryPort();
+    public abstract PassHasherServicePort passHasherServicePort();
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
