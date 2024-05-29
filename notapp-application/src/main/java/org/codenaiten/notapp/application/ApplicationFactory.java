@@ -4,10 +4,9 @@ import org.codenaiten.notapp.application.api.LoginUseCase;
 import org.codenaiten.notapp.application.api.SignupUseCase;
 import org.codenaiten.notapp.application.usecase.LoginUseCaseImpl;
 import org.codenaiten.notapp.application.usecase.SignupUseCaseImpl;
-import org.codenaiten.notapp.domain.DomainContext;
+import org.codenaiten.notapp.domain.DomainFactory;
 
-public abstract class ApplicationContext extends DomainContext {
-
+public abstract class ApplicationFactory extends DomainFactory {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // ---| USE CASE |--------------------------------------------------------------------------------------------------- \\

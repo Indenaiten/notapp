@@ -5,8 +5,7 @@ import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.port.service.PassHasherServicePort;
 import org.codenaiten.notapp.domain.service.UserServiceImpl;
 
-public abstract class DomainContext {
-
+public abstract class DomainFactory {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // ---| SERVICE |---------------------------------------------------------------------------------------------------- \\
