@@ -56,13 +56,6 @@
                 <artifactId>notapp-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-            <!-- BCRYPT -->
-            <dependency>
-                <groupId>org.mindrot</groupId>
-                <artifactId>jbcrypt</artifactId>
-                <version>${dep.mindrot.jbcrypt.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

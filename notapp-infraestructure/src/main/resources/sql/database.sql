@@ -35,6 +35,3 @@ CREATE TABLE notes(
 	FOREIGN KEY( owner ) REFERENCES users( id )
     		ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARSET = utf8;
-
-INSERT INTO users( id, username, email, name, lastname, password) VALUES
-    ('481f157c-feae-4139-8195-215b3fb4752e', 'superpepe', 'pepe@mail.com', 'pepe', 'pepote', '$2a$12$WpHoEAnNJu8X/WYkRJX2POLD0RXRrP3nBJ476iJMqJiyMWytCqOQO');
