@@ -8,6 +8,8 @@ import org.codenaiten.notapp.application.request.LoginRequest;
 import org.codenaiten.notapp.application.request.SignupRequest;
 import org.codenaiten.notapp.application.usecase.LoginUseCaseImpl;
 import org.codenaiten.notapp.infraestructure.rest.api.AuthRestController;
+import org.codenaiten.notapp.infraestructure.rest.response.ApiErrorCode;
+import org.codenaiten.notapp.infraestructure.rest.response.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,16 +38,18 @@ public class AuthRestControllerImpl implements AuthRestController {
 
     @SneakyThrows
     @Override
-    public SignupDto signup(final SignupRequest request) {
-        return this.signupUseCase.run( request );
+    public ApiResponse<SignupDto> signup(final SignupRequest request) {
+        final SignupDto result = this.signupUseCase.run( request );
+        return ApiResponse.success().message( "User Register Succesfully" ).build( result );
     }
 
     @SneakyThrows
     @Override
-    public void signup(final LoginRequest request) {
+    public ApiResponse<Void> login(final LoginRequest request) {
         this.loginUseCase.run(request);
+        return ApiResponse.success().message( "Login Succesfully" ).build();
     }
 
-    // ------------------------------------------------------------------------------------------------------------------ \\
+// ------------------------------------------------------------------------------------------------------------------ \\
 
 }
