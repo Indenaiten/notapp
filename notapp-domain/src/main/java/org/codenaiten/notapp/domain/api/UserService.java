@@ -1,11 +1,11 @@
 package org.codenaiten.notapp.domain.api;
 
 import org.codenaiten.notapp.domain.entity.User;
-import org.codenaiten.notapp.domain.type.Email;
-import org.codenaiten.notapp.domain.type.LastName;
-import org.codenaiten.notapp.domain.type.Name;
+import org.codenaiten.notapp.domain.vo.Email;
+import org.codenaiten.notapp.domain.vo.LastName;
+import org.codenaiten.notapp.domain.vo.Name;
 import org.codenaiten.notapp.domain.exception.CreateUserException;
-import org.codenaiten.notapp.domain.type.user.UserName;
+import org.codenaiten.notapp.domain.vo.user.UserName;
 
 public interface UserService {
 

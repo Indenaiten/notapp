@@ -1,4 +1,4 @@
-package org.codenaiten.notapp.domain.type;
+package org.codenaiten.notapp.domain.vo;
 
 import org.codenaiten.notapp.domain.core.vo.ValueObject;
 
@@ -19,6 +19,9 @@ public class Email extends ValueObject<String> {
      */
     @Serial
     private static final long serialVersionUID = 1L;
+
+    /** The minimum number of domain levels required for a valid email address. */
+    public static final int MIN_DOMAIN_LEVELS = 2;
 
     /** A pattern that matches valid usernames of email. */
     public static final Pattern PATTERN_USERNAME = Pattern.compile( "[a-z0-9+_.-]+", Pattern.CASE_INSENSITIVE );
@@ -63,6 +66,10 @@ public class Email extends ValueObject<String> {
         if( !PATTERN_USERNAME.matcher( username ).matches() ){
             throw new IllegalArgumentException( String.format(
                     "The username must have the following format: %s", PATTERN_USERNAME ));
+        }
+        if( domain.size() < MIN_DOMAIN_LEVELS ){
+            throw new IllegalArgumentException( String.format(
+                    "The domain must have at least %d levels", MIN_DOMAIN_LEVELS ));
         }
 
         this.username = username;

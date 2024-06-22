@@ -9,11 +9,6 @@ spring:
   application:
     name: notapp
 
-  security:
-    user:
-      name: notapp
-      password: notapp.pass
-
   datasource:
     url: jdbc:mysql://localhost:6500/notapp-db
     username: notapp

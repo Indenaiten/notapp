@@ -1,17 +1,18 @@
 package org.codenaiten.notapp.infraestructure.config.context;
 
-import jakarta.annotation.PostConstruct;
 import org.codenaiten.notapp.application.ApplicationFactory;
 import org.codenaiten.notapp.application.api.LoginUseCase;
 import org.codenaiten.notapp.application.api.SignupUseCase;
+import org.codenaiten.notapp.domain.api.UserService;
 import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
-import org.codenaiten.notapp.domain.port.service.PassHasherServicePort;
+import org.codenaiten.notapp.domain.port.manager.PasswordManagerPort;
+import org.codenaiten.notapp.infraestructure.decorator.service.UseServiceDecorator;
+import org.codenaiten.notapp.infraestructure.decorator.usecase.LoginUseCaseDecorator;
+import org.codenaiten.notapp.infraestructure.decorator.usecase.SignuptUseCaseDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Service;
 
 @Configuration
 public class SpringContextConfig extends ApplicationFactory {
@@ -36,15 +37,24 @@ public class SpringContextConfig extends ApplicationFactory {
     @Bean
     @Override
     public SignupUseCase signupUseCase() {
-        return super.signupUseCase();
+        return new SignuptUseCaseDecorator( super.signupUseCase() );
     }
 
     @Bean
     @Override
     public LoginUseCase loginUseCase() {
-        return super.loginUseCase();
+        return new LoginUseCaseDecorator( super.loginUseCase() );
     }
 
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// ---| SERVICES |--------------------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @Override
+    public UserService userService() {
+        return new UseServiceDecorator( super.userService() );
+    }
 
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -57,8 +67,8 @@ public class SpringContextConfig extends ApplicationFactory {
     }
 
     @Override
-    public PassHasherServicePort passHasherServicePort() {
-        return this.applicationContext.getBean( PassHasherServicePort.class );
+    public PasswordManagerPort passHasherServicePort() {
+        return this.applicationContext.getBean( PasswordManagerPort.class );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

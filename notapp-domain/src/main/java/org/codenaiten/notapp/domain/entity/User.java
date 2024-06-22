@@ -1,11 +1,11 @@
 package org.codenaiten.notapp.domain.entity;
 
 import org.codenaiten.notapp.domain.core.entity.Entity;
-import org.codenaiten.notapp.domain.type.Email;
-import org.codenaiten.notapp.domain.type.LastName;
-import org.codenaiten.notapp.domain.type.Name;
-import org.codenaiten.notapp.domain.type.user.UserId;
-import org.codenaiten.notapp.domain.type.user.UserName;
+import org.codenaiten.notapp.domain.vo.Email;
+import org.codenaiten.notapp.domain.vo.LastName;
+import org.codenaiten.notapp.domain.vo.Name;
+import org.codenaiten.notapp.domain.vo.user.UserId;
+import org.codenaiten.notapp.domain.vo.user.UserName;
 
 import java.util.Objects;
 

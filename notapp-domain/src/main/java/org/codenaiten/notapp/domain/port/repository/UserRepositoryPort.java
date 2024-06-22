@@ -1,8 +1,8 @@
 package org.codenaiten.notapp.domain.port.repository;
 
-import org.codenaiten.notapp.domain.type.Email;
-import org.codenaiten.notapp.domain.type.user.UserId;
-import org.codenaiten.notapp.domain.type.user.UserName;
+import org.codenaiten.notapp.domain.vo.Email;
+import org.codenaiten.notapp.domain.vo.user.UserId;
+import org.codenaiten.notapp.domain.vo.user.UserName;
 import org.codenaiten.notapp.domain.entity.User;
 
 import java.util.Optional;

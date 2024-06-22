@@ -1,4 +1,4 @@
-package org.codenaiten.notapp.domain.type;
+package org.codenaiten.notapp.domain.vo;
 
 import org.codenaiten.notapp.domain.core.vo.ValueObject;
 
