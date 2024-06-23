@@ -3,12 +3,9 @@ package org.codenaiten.notapp.infraestructure.config.context;
 import org.codenaiten.notapp.application.ApplicationFactory;
 import org.codenaiten.notapp.application.api.LoginUseCase;
 import org.codenaiten.notapp.application.api.SignupUseCase;
-import org.codenaiten.notapp.domain.api.UserService;
-import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.port.manager.PasswordManagerPort;
-import org.codenaiten.notapp.infraestructure.decorator.service.UseServiceDecorator;
-import org.codenaiten.notapp.infraestructure.decorator.usecase.LoginUseCaseDecorator;
-import org.codenaiten.notapp.infraestructure.decorator.usecase.SignuptUseCaseDecorator;
+import org.codenaiten.notapp.domain.port.persistence.manager.TransactionalManagerPort;
+import org.codenaiten.notapp.domain.port.persistence.repository.UserRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +21,12 @@ public class SpringContextConfig extends ApplicationFactory {
 // ------------------------------------------------------------------------------------------------------------------ \\
 // ---| CONSTRUCTOR |------------------------------------------------------------------------------------------------ \\
 // ------------------------------------------------------------------------------------------------------------------ \\
+
     @Autowired
     public SpringContextConfig( final ApplicationContext applicationContext ) {
         this.applicationContext = applicationContext;
     }
+
 
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -37,29 +36,25 @@ public class SpringContextConfig extends ApplicationFactory {
     @Bean
     @Override
     public SignupUseCase signupUseCase() {
-        return new SignuptUseCaseDecorator( super.signupUseCase() );
+        return super.signupUseCase();
     }
 
     @Bean
     @Override
     public LoginUseCase loginUseCase() {
-        return new LoginUseCaseDecorator( super.loginUseCase() );
+        return super.loginUseCase();
     }
 
-
-// ------------------------------------------------------------------------------------------------------------------ \\
-// ---| SERVICES |--------------------------------------------------------------------------------------------------- \\
-// ------------------------------------------------------------------------------------------------------------------ \\
-
-    @Override
-    public UserService userService() {
-        return new UseServiceDecorator( super.userService() );
-    }
 
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // ---| IMPLEMENT METHODS |------------------------------------------------------------------------------------------ \\
 // ------------------------------------------------------------------------------------------------------------------ \\
+
+    @Override
+    public TransactionalManagerPort transactionalManagerPort() {
+        return this.applicationContext.getBean( TransactionalManagerPort.class );
+    }
 
     @Override
     public UserRepositoryPort userRepositoryPort() {

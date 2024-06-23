@@ -7,7 +7,7 @@ import org.codenaiten.notapp.domain.vo.Name;
 import org.codenaiten.notapp.domain.entity.User;
 import org.codenaiten.notapp.domain.api.UserService;
 import org.codenaiten.notapp.domain.exception.CreateUserException;
-import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
+import org.codenaiten.notapp.domain.port.persistence.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.vo.user.UserId;
 import org.codenaiten.notapp.domain.vo.user.UserName;
 

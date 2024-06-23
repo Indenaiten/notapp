@@ -1,4 +1,4 @@
-package org.codenaiten.notapp.domain.port.repository;
+package org.codenaiten.notapp.domain.port.persistence.repository;
 
 import org.codenaiten.notapp.domain.vo.Email;
 import org.codenaiten.notapp.domain.vo.user.UserId;

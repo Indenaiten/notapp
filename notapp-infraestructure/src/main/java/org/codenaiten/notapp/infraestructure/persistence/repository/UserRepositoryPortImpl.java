@@ -1,9 +1,9 @@
-package org.codenaiten.notapp.infraestructure.persistence;
+package org.codenaiten.notapp.infraestructure.persistence.repository;
 
 
 import org.codenaiten.notapp.domain.vo.Email;
 import org.codenaiten.notapp.domain.entity.User;
-import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
+import org.codenaiten.notapp.domain.port.persistence.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.vo.user.UserId;
 import org.codenaiten.notapp.domain.vo.user.UserName;
 import org.codenaiten.notapp.infraestructure.persistence.model.UserModel;

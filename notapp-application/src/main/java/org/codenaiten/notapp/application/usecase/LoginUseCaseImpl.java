@@ -4,7 +4,7 @@ import org.codenaiten.notapp.application.api.LoginUseCase;
 import org.codenaiten.notapp.application.exception.LoginException;
 import org.codenaiten.notapp.application.request.LoginRequest;
 import org.codenaiten.notapp.domain.entity.User;
-import org.codenaiten.notapp.domain.port.repository.UserRepositoryPort;
+import org.codenaiten.notapp.domain.port.persistence.repository.UserRepositoryPort;
 import org.codenaiten.notapp.domain.port.manager.PasswordManagerPort;
 import org.codenaiten.notapp.domain.vo.Email;
 import org.codenaiten.notapp.domain.vo.user.UserName;
